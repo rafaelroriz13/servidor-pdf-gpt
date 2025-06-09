@@ -1,0 +1,44 @@
+openapi: 3.1.0
+info:
+  title: Rafael PDF Search API
+  description: API para buscar palavras-chave dentro de PDFs armazenados localmente.
+  version: "1.0"
+servers:
+  - url: http://localhost:5000
+paths:
+  /search:
+    get:
+      operationId: buscarPalavrasChave
+      summary: Buscar palavras-chave nos PDFs
+      parameters:
+        - in: query
+          name: keywords
+          schema:
+            type: string
+          required: true
+          description: Lista de palavras separadas por vírgula
+        - in: query
+          name: fileContains
+          schema:
+            type: string
+          required: false
+          description: Parte do nome do arquivo para filtrar os resultados
+      responses:
+        '200':
+          description: Resultado da busca
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  resultados:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        file:
+                          type: string
+                        page:
+                          type: integer
+                        paragraph:
+                          type: string

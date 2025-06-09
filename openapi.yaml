@@ -4,7 +4,7 @@ info:
   description: API para buscar palavras-chave dentro de PDFs armazenados localmente.
   version: "1.0"
 servers:
-  - url: http://localhost:5000
+  - url: https://servidor-pdf-gpt.onrender.com
 paths:
   /search:
     get:
